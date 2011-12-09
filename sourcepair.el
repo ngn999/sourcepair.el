@@ -430,7 +430,7 @@ See the documentation for these variables for more info.
 
   (catch 'found-matching-file
 
-      (let* ((temp (sourcepair-analyze-filename (buffer-name)))
+      (let* ((temp (sourcepair-analyze-filename (file-name-nondirectory (buffer-file-name ))))
 
                (search-path (car temp))
 
@@ -438,7 +438,7 @@ See the documentation for these variables for more info.
 
         (if (= (length possible-filenames) 0)
 
-              (message "%s is not a recognized source or header file (consider updating sourcepair-source-extensions or sourcepair-header-extensions)" (buffer-name))
+              (message "%s is not a recognized source or header file (consider updating sourcepair-source-extensions or sourcepair-header-extensions)" (file-name-nondirectory (buffer-file-name )))
 
              (progn
 
@@ -470,7 +470,7 @@ See the documentation for these variables for more info.
 
                          (throw 'found-matching-file (find-file matching-filename))))) 
 
-              (message (concat "No matching file for " (buffer-name)
+              (message (concat "No matching file for " (file-name-nondirectory (buffer-file-name ))
 
                                        " (consider updating sourcepair-source-path, sourcepair-header-path)"))))))) 
  
@@ -495,9 +495,9 @@ function will just reindent the region.
 
   (if (member major-mode '(c-mode c++-mode))
 
-        (if (sourcepair-header-file-p (buffer-name))
+        (if (sourcepair-header-file-p (file-name-nondirectory (buffer-file-name )))
 
-              (let* ((this-buffer-name (buffer-name))
+              (let* ((this-buffer-name (file-name-nondirectory (buffer-file-name )))
 
                          (extension (concat (member ?. (append this-buffer-name nil))))
 
