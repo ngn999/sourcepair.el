@@ -98,7 +98,7 @@
 ;; (setq sourcepair-header-path    '( "." "include" "../include" "../*"))
 ;; (setq sourcepair-recurse-ignore '( "CVS" "Obj" "Debug" "Release" ))
 ;;; Code:
-(defcustom sourcepair-source-extensions '( ".cpp" ".cxx" ".cc" ".C" ".c" )
+(defcustom sourcepair-source-extensions '( ".cpp" ".cxx" ".cc" ".c" ".C" )
   "*List of recognized extensions for source files.
 This variable is used by `sourcepair-load'.  The value should be a list
 containing the recognized extensions for source files.  For example: if the
